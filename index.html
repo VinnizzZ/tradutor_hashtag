@@ -140,6 +140,12 @@
 
       let texto = escaparHtml(document.getElementById("entrada").value);
 
+      const hashtags = texto.match(/#[\wÀ-ÿ:]+/g) || [];
+      const mencoes = texto.match(/(?<![\wÀ-ÿ.])@[\wÀ-ÿ]+(?:\.[\wÀ-ÿ]+)*/g) || [];
+
+      console.log("Hashtags:", hashtags);
+      console.log("Menções:", mencoes);
+
       texto = substituirMencoes(texto, erros);
       texto = substituirHashtags(texto, erros);
       texto = substituirNegrito(texto);
